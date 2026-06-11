@@ -19,18 +19,40 @@
         }
         .container::before {
             content: ''; position: absolute; top: 0; left: -50%; width: 150%; height: 100%;
-            background: radial-gradient(ellipse at 10% 20%, rgba(130,13,169,0.15) 0%, transparent 50%),
-                        radial-gradient(ellipse at 85% 45%, rgba(130,13,169,0.1) 0%, transparent 40%),
-                        radial-gradient(ellipse at 20% 60%, rgba(77,166,255,0.08) 0%, transparent 40%);
+            background: radial-gradient(ellipse 60% 40% at 12% 14%, rgba(130,13,169,0.40) 0%, transparent 55%),
+                        radial-gradient(ellipse 50% 35% at 88% 30%, rgba(123,77,255,0.28) 0%, transparent 50%),
+                        radial-gradient(ellipse 55% 40% at 20% 58%, rgba(77,166,255,0.22) 0%, transparent 50%),
+                        radial-gradient(ellipse 45% 35% at 80% 78%, rgba(200,80,192,0.20) 0%, transparent 50%),
+                        radial-gradient(ellipse 40% 30% at 50% 95%, rgba(77,166,255,0.15) 0%, transparent 55%);
             pointer-events: none; z-index: 0;
         }
-        .container > * { position: relative; z-index: 1; }
+        /* Starfield */
+        .container::after {
+            content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            background-image:
+                radial-gradient(1.6px 1.6px at 25% 22%, #ffffff, transparent),
+                radial-gradient(1.2px 1.2px at 72% 33%, rgba(255,255,255,0.85), transparent),
+                radial-gradient(1px 1px at 48% 62%, rgba(255,255,255,0.65), transparent),
+                radial-gradient(1.7px 1.7px at 86% 78%, #ffffff, transparent),
+                radial-gradient(1px 1px at 14% 84%, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1.3px 1.3px at 60% 90%, rgba(200,180,255,0.8), transparent),
+                radial-gradient(1px 1px at 35% 45%, rgba(255,255,255,0.55), transparent),
+                radial-gradient(1.4px 1.4px at 92% 18%, rgba(180,210,255,0.85), transparent);
+            background-size: 260px 260px; background-repeat: repeat;
+            animation: twinkle 4.5s ease-in-out infinite;
+        }
+        @keyframes twinkle { 0%,100% { opacity: 0.35; } 50% { opacity: 0.9; } }
+        .container > * { position: relative; z-index: 2; }
 
         /* Hero */
         .hero { padding: 55px 40px 40px; text-align: center; }
         .hero .brand { font-size: 1.1em; font-weight: 700; color: #fff; letter-spacing: 8px; margin-bottom: 8px; opacity: 0.9; }
         .hero h1 { font-size: 2.6em; font-weight: 900; letter-spacing: 3px; display: inline-block; }
-        .hero h1 .neon { color: transparent; -webkit-text-stroke: 1.5px #c850c0; text-shadow: 0 0 20px rgba(200,80,192,0.5), 0 0 40px rgba(200,80,192,0.3); }
+        .hero h1 .neon { color: transparent; -webkit-text-stroke: 1.5px #c850c0; text-shadow: 0 0 10px rgba(200,80,192,0.7), 0 0 24px rgba(200,80,192,0.55), 0 0 48px rgba(200,80,192,0.35); animation: neonPulse 3s ease-in-out infinite; }
+        @keyframes neonPulse {
+            0%,100% { text-shadow: 0 0 10px rgba(200,80,192,0.7), 0 0 24px rgba(200,80,192,0.55), 0 0 48px rgba(200,80,192,0.35); }
+            50% { text-shadow: 0 0 14px rgba(200,80,192,0.9), 0 0 34px rgba(200,80,192,0.7), 0 0 68px rgba(200,80,192,0.5); }
+        }
         .hero h1 .year { display: block; font-size: 0.4em; font-weight: 400; color: #fff; letter-spacing: 4px; margin-top: 4px; -webkit-text-stroke: 0; text-shadow: none; }
         .hero .subtitle { font-size: 1em; color: rgba(255,255,255,0.7); margin-top: 14px; font-weight: 300; letter-spacing: 3px; }
         .hero .accent-line { width: 60px; height: 2px; background: linear-gradient(90deg, #c850c0, #4da6ff); margin: 18px auto 0; border-radius: 2px; }
